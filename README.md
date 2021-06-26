@@ -13,4 +13,4 @@ optional arguments:
   -h, --help  show this help message and exit
 
 #Example.
-python3.7 ./dynamicdnsquery.py <your DDNS FQDN> 8.8.8.8
+python3.7 ./dynamicdnsquery.py your-DDNS-FQDN 8.8.8.8
