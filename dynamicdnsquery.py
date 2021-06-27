@@ -16,7 +16,7 @@ def querydnsserver(fqdn, ns):
     dnsdata = dns.message.make_query(fqdn, dns.rdatatype.A)
     try:
         query = dns.query.udp(dnsdata, ns, timeout=5)
-        answer = query.answer[0].to_text()
+        answer = query.answer[len(query.answer) - 1][0].to_text()
         return answer.split()[-1:][0]
     except Exception as e:
         logging.info(e)
@@ -43,7 +43,6 @@ def ddnsupdate():
         updaterequest = requests.get(apiurl, params=payload, timeout=10)
         if updaterequest.status_code == 200:
             logging.info('Send request to update IP address.')
-            print('Request send to DDNS provider.')
         else:
             logging.info('Unable to update IP address.')
     except Exception as e:
